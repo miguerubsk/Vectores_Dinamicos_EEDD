@@ -26,7 +26,7 @@
 
 using namespace std;
     
-    
+
 
 
 double calculardistaciamaslejana(vectordinamico<Cliente> v) {
@@ -123,12 +123,15 @@ int main(int argc, char** argv) {
     for (int i = 0; i < ordenado.tam(); i++) {
         cout << ordenado[i].GetNOMBRE() << endl;
     }
+    int x,y;
     Cliente c;
-    c.SetNombre("Francesco ");
+    c.SetNombre("iwdvaiubdiadiadiuwbd");
+    x=ordenado.tam();
     cout << "Antes de eliminar: " << ordenado.tam() << endl;
-   ordenado.eliminar(ordenado.busquedaBin(c));
+    ordenado.eliminar(ordenado.busquedaBin(c));
     cout << "Despues de eliminar: " << ordenado.tam() << endl;
-    
+    y=ordenado.tam();
+    cout << "Eliminados: "<< x-y << endl;
     cout<<"Calculando la mayor distancia..."<<endl;
     t0=clock();
     double maxDistancia = calculardistaciamaslejana(vector);

@@ -97,7 +97,7 @@ T& vectordinamico<T>::operator[](unsigned int pos) {
 template <class T>
 void vectordinamico<T>::insertar(const T& dato, unsigned int pos) {
     if (pos < 0) {
-        throw std::bad_alloc("La posicion es erronea");
+        throw std::string("La posicion es erronea");
     }
     if (taml == tamf) {
         T *aux;

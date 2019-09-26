@@ -40,6 +40,13 @@ public:
     UTM GetUTM() const {
         return posicion;
     }
+    bool operator==(const Cliente& orig)
+    {
+        if(this->nombre == orig.nombre)
+            return true;
+        
+        return false;
+    }
     bool operator <(Cliente& right) const{
         return (nombre<right.nombre);
     }

@@ -36,7 +36,6 @@ public:
     int disminuye();
     vectordinamico& operator<(const vectordinamico<T>& right);
     void ordenar();
-//    double calculardistaciamaslejana();
 private:
     unsigned long int taml, tamf;
     T *vec;
@@ -191,7 +190,7 @@ unsigned int vectordinamico<T>::tam() {
     return taml;
 
 }
-
+//La busqueda binaria para el nombre del Cliente una vez ya ordenado el vector
 template <class T>
 int vectordinamico<T>::busquedaBin(const T& p) {
     int inf = 0;
@@ -219,8 +218,4 @@ void vectordinamico<T>::ordenar(){
     std::sort(vec,vec+taml);
 }
 
-//template <class T>
-//double vectordinamico<T>::calculardistaciamaslejana() {
-    
-//}
 #endif /* VECTORDINAMICO_H */

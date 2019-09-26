@@ -125,10 +125,9 @@ int main(int argc, char** argv) {
     }
     Cliente c;
     c.SetNombre("Francesco ");
-    cout << "Antes de eliminar: " << vector.tam() << endl;
-    vector.eliminar(vector.busquedaBin(c));
-    cout << "Despues de eliminar: " << vector.tam() << endl;
-
+    cout << "Antes de eliminar: " << ordenado.tam() << endl;
+   ordenado.eliminar(ordenado.busquedaBin(c));
+    cout << "Despues de eliminar: " << ordenado.tam() << endl;
     
     cout<<"Calculando la mayor distancia..."<<endl;
     t0=clock();

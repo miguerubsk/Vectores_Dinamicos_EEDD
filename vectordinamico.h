@@ -158,7 +158,7 @@ int vectordinamico<T>::disminuye() {
 template <class T>
 T vectordinamico<T>::eliminar(unsigned int pos) {
     if (pos < 0) {
-        throw std::bad_alloc("La posicion es erronea");
+        throw std::string("La posicion es erronea");
     }
     if (taml * 3 < tamf) {
         tamf = tamf / 2;
@@ -198,9 +198,9 @@ int vectordinamico<T>::busquedaBin(const T& p) {
     int curIn;
     while (inf <= sup) {
         curIn = (inf + sup) / 2;
-        if (vec[curIn] == p)
+        if (vec[curIn].GetNOMBRE()  == p.GetNOMBRE())
             return curIn;
-        else if (vec[curIn] < p) inf = curIn + 1;
+        else if (vec[curIn].GetNOMBRE() < p.GetNOMBRE()) inf = curIn + 1;
         else sup = curIn - 1;
     }
     return -1;

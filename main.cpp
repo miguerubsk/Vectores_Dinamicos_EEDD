@@ -31,13 +31,8 @@ using namespace std;
 
 double calculardistaciamaslejana(vectordinamico<Cliente> v) {
     double distancia, maxDistancia = 0;
-//    int x1, x2, y1, y2;
     for(int i=0; i<v.tam()-1; i++){
         for(int j=i+1; j<v.tam(); j++){
-//            x1 = v[i].GetUTM().latitud;
-//            x2 = v[j].GetUTM().latitud;
-//            y1 = v[i].GetUTM().longitud;
-//            y2 = v[j].GetUTM().longitud;
             distancia = v[i].distancia(v[j]);
             
             if(distancia > maxDistancia)
@@ -114,7 +109,7 @@ void leeClientes(string fileNameClientes, vectordinamico<Cliente> &v){
 	
 
 int main(int argc, char** argv) {
-    vectordinamico<Cliente> vector, vector1;
+    vectordinamico<Cliente> vector;
     unsigned t0, t1;
 
     cout << "Comienzo de lectura de un fichero " << endl;

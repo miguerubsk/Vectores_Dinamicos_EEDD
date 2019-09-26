@@ -97,7 +97,7 @@ T& vectordinamico<T>::operator[](unsigned int pos) {
 template <class T>
 void vectordinamico<T>::insertar(const T& dato, unsigned int pos) {
     if (pos < 0) {
-        throw std::string("La posicion es erronea");
+        throw std::bad_alloc("La posicion es erronea");
     }
     if (taml == tamf) {
         T *aux;
@@ -158,7 +158,7 @@ int vectordinamico<T>::disminuye() {
 template <class T>
 T vectordinamico<T>::eliminar(unsigned int pos) {
     if (pos < 0) {
-        throw std::string("La posicion es erronea");
+        throw std::bad_alloc("La posicion es erronea");
     }
     if (taml * 3 < tamf) {
         tamf = tamf / 2;
@@ -208,7 +208,7 @@ int vectordinamico<T>::busquedaBin(const T& p) {
 
 template <class T>
 void vectordinamico<T>::asigna(const T &p, unsigned int pos) {
-    if (pos > taml) throw std::out_of_range("Asigna, una posicion no valida");
+    if (pos > taml) throw std::out_of_range("Posicion no valida");
     vec[pos] = p;
 
 }

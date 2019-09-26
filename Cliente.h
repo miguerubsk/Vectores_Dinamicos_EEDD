@@ -47,6 +47,27 @@ public:
     bool operator >(Cliente& right) const {
         return (nombre>right.nombre);
     }
+
+    void SetDireccion(string direccion) {
+        this->direccion = direccion;
+    }
+
+    void SetDni(string dni) {
+        this->dni = dni;
+    }
+
+    void SetNombre(string nombre) {
+        this->nombre = nombre;
+    }
+
+    void SetPass(string pass) {
+        this->pass = pass;
+    }
+
+    void SetPosicion(UTM posicion) {
+        this->posicion = posicion;
+    }
+
     
     Cliente& operator= (const Cliente &orig){
 //        if(this == orig){

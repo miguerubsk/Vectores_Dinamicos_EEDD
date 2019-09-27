@@ -118,20 +118,27 @@ int main(int argc, char** argv) {
     vectordinamico<Cliente> ordenado(vector);
     
     ordenado.ordenar();
-//    cout<<"Vector ya ordenado"<<endl;
+    cout<<"Vector ya ordenado"<<endl;
     
     for (int i = 0; i < ordenado.tam(); i++) {
         cout << ordenado[i].GetNOMBRE() << endl;
     }
     int x,y;
-    Cliente c;
-    c.SetNombre("iwdvaiubdiadiadiuwbd");
+    Cliente cliente1;
+    cliente1.SetNombre("Francesco ");
     x=ordenado.tam();
     cout << "Antes de eliminar: " << ordenado.tam() << endl;
-    ordenado.eliminar(ordenado.busquedaBin(c));
+    int auxiliar = 0;
+    do {
+        auxiliar = ordenado.busquedaBin(cliente1);
+        if (auxiliar != -1)
+            ordenado.eliminar(auxiliar);
+    } while (auxiliar != -1);
     cout << "Despues de eliminar: " << ordenado.tam() << endl;
     y=ordenado.tam();
     cout << "Eliminados: "<< x-y << endl;
+    
+    /////////////////////////////////////////////
     cout<<"Calculando la mayor distancia..."<<endl;
     t0=clock();
     double maxDistancia = calculardistaciamaslejana(vector);

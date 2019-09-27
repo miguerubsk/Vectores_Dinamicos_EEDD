@@ -27,7 +27,7 @@ struct UTM{
 class Cliente {
 public:
     //Constructor
-    Cliente(){}
+    Cliente(): dni("0"), pass("0"), nombre("0"), direccion("0"), posicion(0.0, 0.0){}
     Cliente(string _dni, string _pass, string _nombre, string _direccion, double _latitud, double _longitud):
     dni(_dni), pass(_pass), nombre(_nombre), direccion (_direccion), posicion (_latitud, _longitud){}
     
@@ -40,11 +40,13 @@ public:
     UTM GetUTM() const {
         return posicion;
     }
-    bool operator==(const Cliente& orig)
+    bool operator == (const Cliente& orig)
     {
-        if(this->nombre == orig.nombre)
+    std::size_t found = this->nombre.find(orig.nombre);
+
+        if (found != std::string::npos)
             return true;
-        
+
         return false;
     }
     bool operator <(Cliente& right) const{

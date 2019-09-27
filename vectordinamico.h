@@ -31,7 +31,7 @@ public:
     T eliminar(unsigned int pos = UINT_MAX);
     void asigna(const T &p, unsigned int pos);
     T& recupera(unsigned int pos);
-    int busquedaBin(const T& p);
+    int busquedaBin(T& p);
     void aumenta(int dato);
     int disminuye();
     vectordinamico& operator<(const vectordinamico<T>& right);
@@ -160,29 +160,27 @@ T vectordinamico<T>::eliminar(unsigned int pos) {
     if (pos < 0) {
         throw std::string("La posicion es erronea");
     }
-    if (taml * 3 < tamf) {
-        tamf = tamf / 2;
-        T *vaux = new T[tamf];
-        for (unsigned i = 0; i < taml; i++) {
-            vaux[i] = vec[i];
-        };
-        delete []vec;
-        vec = vaux;
-    }
+if (pos == UINT_MAX)
+            pos = taml;
 
-    if (pos == UINT_MAX) {
-        pos = taml;
-    }
+        if (pos != taml) {
+            for (int i = pos; i < taml - 1; i++) {
+                vec[i] = vec[i + 1];
+            }
+        } else {
+            taml--;
+        }
 
-    if (pos != UINT_MAX) {
-        for (unsigned i = pos; i < taml; i++) {
-            vec[i] = vec[i + 1];
+        if (taml * 3 < tamf) {
+            T* vaux = new T[tamf / 2];
+            for (int i = 0; i < taml; i++) {
+                vaux[i] = vec[i];
+            }
 
-        };
-        taml--;
-
-        return vec[--taml];
-    }
+            delete []vec;
+            vec = vaux;
+        }
+        return vec[taml--];
 }
 
 template <class T>
@@ -192,15 +190,15 @@ unsigned int vectordinamico<T>::tam() {
 }
 //La busqueda binaria para el nombre del Cliente una vez ya ordenado el vector
 template <class T>
-int vectordinamico<T>::busquedaBin(const T& p) {
+int vectordinamico<T>::busquedaBin(T& p) {
     int inf = 0;
     int sup = taml - 1;
     int curIn;
     while (inf <= sup) {
         curIn = (inf + sup) / 2;
-        if (vec[curIn].GetNOMBRE()  == p.GetNOMBRE())
+        if (vec[curIn]  == p)
             return curIn;
-        else if (vec[curIn].GetNOMBRE() < p.GetNOMBRE()) inf = curIn + 1;
+        else if (vec[curIn] < p) inf = curIn + 1;
         else sup = curIn - 1;
     }
     return -1;

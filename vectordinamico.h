@@ -41,18 +41,24 @@ private:
     T *vec;
 };
 //Constructor Defecto
+
 template <class T>
 vectordinamico<T>::vectordinamico() : taml(0), tamf(1) {
     vec = new T[tamf];
 }
 //Constructor copia parcial
+
 template <class T>
 vectordinamico<T>::vectordinamico(const vectordinamico& orig, unsigned inicio, unsigned num) {
+    if (inicio < 0 || num < 0) {
+        throw std::string("No puede ser negativos");
+    }
     for (int i = inicio; i < num; i++) {
-        vec[i-inicio] = orig.vec[i];
+        vec[i - inicio] = orig.vec[i];
     }
 }
 //Constructor copia
+
 template <class T>
 vectordinamico<T>::vectordinamico(const vectordinamico& orig) : tamf(orig.tamf), taml(orig.taml), vec(new T[orig.tamf]) {
     for (int i = 0; i < taml; i++) {
@@ -60,14 +66,19 @@ vectordinamico<T>::vectordinamico(const vectordinamico& orig) : tamf(orig.tamf),
     }
 }
 //Destructor
+
 template <class T>
 vectordinamico<T>::~vectordinamico() {
     if (vec)
         delete []vec;
 }
 //Constructor tamaño
+
 template <class T>
 vectordinamico<T>::vectordinamico(unsigned tam) {
+    if (tam < 0) {
+        throw std::string("El tamaño no puede ser negativo");
+    }
     float a;
     a = ceil(log2(tam));
     tamf = pow(2, a);
@@ -91,6 +102,9 @@ vectordinamico<T>& vectordinamico<T>::operator=(const vectordinamico& right) {
 
 template <class T>
 T& vectordinamico<T>::operator[](unsigned int pos) {
+    if (pos < 0) {
+        throw std::string("La posicion es erronea");
+    }
     return vec[pos];
 }
 
@@ -108,7 +122,7 @@ void vectordinamico<T>::insertar(const T& dato, unsigned int pos) {
         delete []vec;
         vec = aux;
     }
-      
+
 
     if (pos == UINT_MAX) {
         vec[taml++] = dato;
@@ -151,36 +165,33 @@ int vectordinamico<T>::disminuye() {
     }
     return vec[--taml];
 }
- 
-
-
 
 template <class T>
 T vectordinamico<T>::eliminar(unsigned int pos) {
     if (pos < 0) {
         throw std::string("La posicion es erronea");
     }
-if (pos == UINT_MAX)
-            pos = taml;
+    if (pos == UINT_MAX)
+        pos = taml;
 
-        if (pos != taml) {
-            for (int i = pos; i < taml - 1; i++) {
-                vec[i] = vec[i + 1];
-            }
-        } else {
-            taml--;
+    if (pos != taml) {
+        for (int i = pos; i < taml - 1; i++) {
+            vec[i] = vec[i + 1];
+        }
+    } else {
+        taml--;
+    }
+
+    if (taml * 3 < tamf) {
+        T* vaux = new T[tamf / 2];
+        for (int i = 0; i < taml; i++) {
+            vaux[i] = vec[i];
         }
 
-        if (taml * 3 < tamf) {
-            T* vaux = new T[tamf / 2];
-            for (int i = 0; i < taml; i++) {
-                vaux[i] = vec[i];
-            }
-
-            delete []vec;
-            vec = vaux;
-        }
-        return vec[taml--];
+        delete []vec;
+        vec = vaux;
+    }
+    return vec[taml--];
 }
 
 template <class T>
@@ -189,6 +200,7 @@ unsigned int vectordinamico<T>::tam() {
 
 }
 //La busqueda binaria para el nombre del Cliente una vez ya ordenado el vector
+
 template <class T>
 int vectordinamico<T>::busquedaBin(T& p) {
     int inf = 0;
@@ -196,7 +208,7 @@ int vectordinamico<T>::busquedaBin(T& p) {
     int curIn;
     while (inf <= sup) {
         curIn = (inf + sup) / 2;
-        if (vec[curIn]  == p)
+        if (vec[curIn] == p)
             return curIn;
         else if (vec[curIn] < p) inf = curIn + 1;
         else sup = curIn - 1;
@@ -212,8 +224,8 @@ void vectordinamico<T>::asigna(const T &p, unsigned int pos) {
 }
 
 template <class T>
-void vectordinamico<T>::ordenar(){ 
-    std::sort(vec,vec+taml);
+void vectordinamico<T>::ordenar() {
+    std::sort(vec, vec + taml);
 }
 
 #endif /* VECTORDINAMICO_H */

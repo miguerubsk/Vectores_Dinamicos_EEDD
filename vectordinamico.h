@@ -102,9 +102,8 @@ vectordinamico<T>& vectordinamico<T>::operator=(const vectordinamico& right) {
 
 template <class T>
 T& vectordinamico<T>::operator[](unsigned int pos) {
-    if (pos < 0) {
-        throw std::string("La posicion es erronea");
-    }
+    if (pos < 0 || pos > taml) throw std::string("La posicion es erronea");
+    
     return vec[pos];
 }
 

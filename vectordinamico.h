@@ -1,6 +1,6 @@
 /* 
  * File:   vectordinamico.h
- * Author: Fernando Jiménez Quesada
+ * Author: Fernando Jiménez Quesada y Miguel González García
  *
  * Created on 19 de septiembre de 2019, 13:07
  */
@@ -163,7 +163,7 @@ template<class T>
 T vectordinamico<T>::eliminar (unsigned long int pos){
       T aux;
       if (taml==0)
-          throw std::out_of_range();
+          throw std::out_of_range("Error taml=0");
       if (pos==UINT_MAX){
         if(taml*3<tamf) {
              disminuye();
@@ -171,7 +171,7 @@ T vectordinamico<T>::eliminar (unsigned long int pos){
         aux=vec[taml-1];
       }else{
         if (pos>=taml)
-             throw std::out_of_range();
+             throw std::out_of_range("Error poscion mayor igual a taml");
         if(taml*3<tamf) {
              disminuye();
         };

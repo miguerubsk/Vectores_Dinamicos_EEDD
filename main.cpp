@@ -6,7 +6,7 @@
 
 /* 
  * File:   main.cpp
- * Author: Fernando
+ * Author: Fernando Jiménez Quesada y Miguel González García
  *
  * Created on 19 de septiembre de 2019, 13:07
  */
@@ -104,51 +104,63 @@ void leeClientes(string fileNameClientes, vectordinamico<Cliente> &v) {
 }
 
 int main(int argc, char** argv) {
-    vectordinamico<Cliente> vector;
-    unsigned t0, t1;
-    //Instanciar el vector con todos los objetos de tipo Cliente leídos desde el fichero en formato csv proporcionado
-    cout << "Comienzo de lectura de un fichero " << endl;
-    leeClientes("clientes_v2.csv", vector);
-    // Crear otro vector a partir de éste con los nombres ordenados
-    vectordinamico<Cliente> ordenado(vector);
-    ordenado.ordenar();
-    cout << "Vector ordenado" << endl;
-    // mostramos los clientes ordenados por pantalla para poder verificar si estan o no ordenados correctamente    
-    for (int i = 0; i < ordenado.tam(); i++) {
-        cout << ordenado[i].GetNOMBRE() << endl;
+    try{
+                
+        vectordinamico<Cliente> vector;
+        unsigned t0, t1;
+
+        //Instanciar el vector con todos los objetos de tipo Cliente leídos desde el fichero en formato csv proporcionado
+        cout << "Comienzo de lectura de un fichero " << endl;
+        leeClientes("clientes_v2.csv", vector);
+        // Crear otro vector a partir de éste con los nombres ordenados
+        vectordinamico<Cliente> ordenado(vector);
+        ordenado.ordenar();
+        cout << "Vector ya ordenado" << endl;
+        // mostramos los clientes ordenados por pantalla para poder verificar si estan o no ordenados correctamente    
+        for (int i = 0; i < ordenado.tam(); i++) {
+            cout << ordenado[i].GetNOMBRE() << endl;
+        }
+        //Eliminar de éste último los clientes que se llamen con un determinado nombre, por ejemplo “Francesco”. Realizar previamente la búsqueda de forma eficiente.
+        int x, y;
+        Cliente cliente1;
+        cliente1.SetNombre("Francesco ");
+        // Creamos un cliente para poder buscarlo dentro del vector ordenado con la busqueda binaria
+        x = ordenado.tam();
+        //Mostramos el tamaño del vector ordenado antes de eliminar nada
+        cout << "Antes de eliminar: " << ordenado.tam() << endl;
+        int auxiliar = 0;
+        do {
+            auxiliar = ordenado.busquedaBin(cliente1);
+            if (auxiliar != -1)
+                ordenado.eliminar(auxiliar);
+        } while (auxiliar != -1);
+        //Mostramos el tamaño del vector ordenado despues de eliminar 
+        cout << "Despues de eliminar: " << ordenado.tam() << endl;
+        y = ordenado.tam();
+        //Aqui mostramos la diferencia de tamaño para verificar cuantos se han eliminado
+        cout << "Eliminados: " << x - y << endl;
+        
+        //vector[-2].GetNOMBRE();
+        //vector.asigna(cliente1,200000000);
+        ///////////////////////////////////////////////////////////////////////////////////////
+        //Aqui calculamos la distancia mas grande en grados entre todos los clientes
+        cout << "Calculando la mayor distancia..." << endl;
+        //Reloj antes de empezar a calcular la distancia
+        t0 = clock();
+        double maxDistancia = calculardistaciamaslejana(vector);
+        cout << "La distancia máxima es: " << maxDistancia << endl;
+        //Reloj despues de terminar de calcular la distancia
+        t1 = clock();
+        double time = (double(t1 - t0) / CLOCKS_PER_SEC);
+        //Aqui mostramos el tiempo que tarda en calcular la distancia para hacernos una idea de la eficiencia de dicha eedd
+        cout << "Tiempo de cálculo: " << time << " segundos\n";
+
+        
+    }catch(std::string &e){
+        std::cerr<<"Excepcion capturada: "<<e<<std::endl;
+        
+    }catch(std::out_of_range &e){
+        std::cerr<<e.what()<<std::endl;
     }
-    //Eliminar de éste último los clientes que se llamen con un determinado nombre, por ejemplo “Francesco”. Realizar previamente la búsqueda de forma eficiente.
-    int x, y;
-    // Creamos un cliente para poder buscarlo dentro del vector ordenado con la busqueda binaria
-    Cliente cliente1;
-    cliente1.SetNombre("Francesco ");
-    x = ordenado.tam();
-    //Mostramos el tamaño del vector ordenado antes de eliminar nada
-    cout << "Antes de eliminar: " << ordenado.tam() << endl;
-    int auxiliar = 0;
-    do {
-        auxiliar = ordenado.busquedaBin(cliente1);
-        if (auxiliar != -1)
-            ordenado.eliminar(auxiliar);
-    } while (auxiliar != -1);
-    //Mostramos el tamaño del vector ordenado despues de eliminar 
-    cout << "Despues de eliminar: " << ordenado.tam() << endl;
-    y = ordenado.tam();
-    //Aqui mostramos la diferencia de tamaño para verificar cuantos se han eliminado
-    cout << "Eliminados: " << x - y << endl;
-
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //Aqui calculamos la distancia mas grande en grados entre todos los clientes
-    cout << "Calculando la mayor distancia..." << endl;
-    //Reloj antes de empezar a calcular la distancia
-    t0 = clock();
-    double maxDistancia = calculardistaciamaslejana(vector);
-    cout << "La distancia máxima es: " << maxDistancia << endl;
-    //Reloj despues de terminar de calcular la distancia
-    t1 = clock();
-    double time = (double(t1 - t0) / CLOCKS_PER_SEC);
-    //Aqui mostramos el tiempo que tarda en calcular la distancia para hacernos una idea de la eficiencia de dicha eedd
-    cout << "Tiempo de cálculo: " << time << " segundos\n";
-
     return 0;
 }

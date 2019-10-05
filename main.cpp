@@ -112,16 +112,16 @@ int main(int argc, char** argv) {
     // Crear otro vector a partir de éste con los nombres ordenados
     vectordinamico<Cliente> ordenado(vector);
     ordenado.ordenar();
-    cout << "Vector ya ordenado" << endl;
+    cout << "Vector ordenado" << endl;
     // mostramos los clientes ordenados por pantalla para poder verificar si estan o no ordenados correctamente    
     for (int i = 0; i < ordenado.tam(); i++) {
         cout << ordenado[i].GetNOMBRE() << endl;
     }
     //Eliminar de éste último los clientes que se llamen con un determinado nombre, por ejemplo “Francesco”. Realizar previamente la búsqueda de forma eficiente.
     int x, y;
+    // Creamos un cliente para poder buscarlo dentro del vector ordenado con la busqueda binaria
     Cliente cliente1;
     cliente1.SetNombre("Francesco ");
-    // Creamos un cliente para poder buscarlo dentro del vector ordenado con la busqueda binaria
     x = ordenado.tam();
     //Mostramos el tamaño del vector ordenado antes de eliminar nada
     cout << "Antes de eliminar: " << ordenado.tam() << endl;

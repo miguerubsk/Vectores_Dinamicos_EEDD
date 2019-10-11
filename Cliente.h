@@ -6,7 +6,7 @@
 
 /* 
  * File:   Cliente.h
- * Author: Miguerubsk
+ * Author: Fernando Jiménez Quesada y Miguel González García
  *
  * Created on 23 de septiembre de 2019, 22:30
  */

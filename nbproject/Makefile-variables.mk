@@ -7,21 +7,21 @@ CND_BASEDIR=`pwd`
 CND_BUILDDIR=build
 CND_DISTDIR=dist
 # Debug configuration
-CND_PLATFORM_Debug=MinGW-Windows
-CND_ARTIFACT_DIR_Debug=dist/Debug/MinGW-Windows
+CND_PLATFORM_Debug=Cygwin-Windows
+CND_ARTIFACT_DIR_Debug=dist/Debug/Cygwin-Windows
 CND_ARTIFACT_NAME_Debug=vectores_dinamicos_eedd
-CND_ARTIFACT_PATH_Debug=dist/Debug/MinGW-Windows/vectores_dinamicos_eedd
-CND_PACKAGE_DIR_Debug=dist/Debug/MinGW-Windows/package
+CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin-Windows/vectores_dinamicos_eedd
+CND_PACKAGE_DIR_Debug=dist/Debug/Cygwin-Windows/package
 CND_PACKAGE_NAME_Debug=vectoresdinamicoseedd.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/MinGW-Windows/package/vectoresdinamicoseedd.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin-Windows/package/vectoresdinamicoseedd.tar
 # Release configuration
-CND_PLATFORM_Release=MinGW-Windows
-CND_ARTIFACT_DIR_Release=dist/Release/MinGW-Windows
+CND_PLATFORM_Release=Cygwin-Windows
+CND_ARTIFACT_DIR_Release=dist/Release/Cygwin-Windows
 CND_ARTIFACT_NAME_Release=vectores_dinamicos_eedd
-CND_ARTIFACT_PATH_Release=dist/Release/MinGW-Windows/vectores_dinamicos_eedd
-CND_PACKAGE_DIR_Release=dist/Release/MinGW-Windows/package
+CND_ARTIFACT_PATH_Release=dist/Release/Cygwin-Windows/vectores_dinamicos_eedd
+CND_PACKAGE_DIR_Release=dist/Release/Cygwin-Windows/package
 CND_PACKAGE_NAME_Release=vectoresdinamicoseedd.tar
-CND_PACKAGE_PATH_Release=dist/Release/MinGW-Windows/package/vectoresdinamicoseedd.tar
+CND_PACKAGE_PATH_Release=dist/Release/Cygwin-Windows/package/vectoresdinamicoseedd.tar
 #
 # include compiler specific variables
 #

@@ -6,7 +6,7 @@
 
 /* 
  * File:   main.cpp
- * Author: Fernando
+ * Author: Fernando Jiménez Quesada y Miguel González García
  *
  * Created on 19 de septiembre de 2019, 13:07
  */
@@ -140,6 +140,7 @@ int main(int argc, char** argv) {
         //Aqui mostramos la diferencia de tamaño para verificar cuantos se han eliminado
         cout << "Eliminados: " << x - y << endl;
         
+        //vector[-2].GetNOMBRE();
         //vector.asigna(cliente1,200000000);
         ///////////////////////////////////////////////////////////////////////////////////////
         //Aqui calculamos la distancia mas grande en grados entre todos los clientes

@@ -5,6 +5,7 @@
 [![Estado](https://img.shields.io/badge/status-active-brightgreen.svg)]()
 <br>
 [![Build and Run](https://github.com/miguerubsk/Vectores_Dinamicos_EEDD/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/miguerubsk/Vectores_Dinamicos_EEDD/actions/workflows/c-cpp.yml)
+[![CodeQL Advanced](https://github.com/miguerubsk/Vectores_Dinamicos_EEDD/actions/workflows/codeql.yml/badge.svg)](https://github.com/miguerubsk/Vectores_Dinamicos_EEDD/actions/workflows/codeql.yml)
 
 ## Descripción
 
